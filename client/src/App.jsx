@@ -4,7 +4,7 @@ import Login from './pages/Login/Login';
 import Register from './pages/Register/Register';
 import Watch from './pages/Watch/Watch';
 const App = () => {
-  return <Login />;
+  return <Home />;
 };
 
 export default App;

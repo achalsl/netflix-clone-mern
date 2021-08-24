@@ -41,11 +41,11 @@ const Featured = (props) => {
                 </span>
                 <div className="buttons">
                     <button className="play">
-                        <PlayArrow/>
+                        <PlayArrow />
                         <span>Play</span>
                     </button>
                     <button className="more">
-                        <InfoOutlined/>
+                        <InfoOutlined />
                         <span>More Info</span>
                     </button>
                 </div>

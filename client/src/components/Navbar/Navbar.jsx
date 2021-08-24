@@ -1,4 +1,4 @@
-import { ArrowDropDown, Notifications, Search } from '@material-ui/icons'
+import { ArrowDropDown, Notifications, SearchRounded } from '@material-ui/icons'
 import React, {useState} from 'react'
 import './Navbar.scss'
 const Navbar = () => {
@@ -16,22 +16,22 @@ const Navbar = () => {
                         src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Netflix_2015_logo.svg/2560px-Netflix_2015_logo.svg.png"
                         alt=""
                     />
-                    <span>Homepage</span>
-                    <span>Series</span>
+                    <span>Home</span>
+                    <span>TV Shows</span>
                     <span>Movies</span>
-                    <span>New and Popular</span>
+                    <span>New & Popular</span>
                     <span>My List</span>
                 </div>
                 <div className="right">
-                    <Search className="icon"/>
+                    <SearchRounded className="icon" />
                     <span>KIDS</span>
-                    <Notifications className="icon"/>
+                    <Notifications className="icon" />
                     <img 
                         src="https://images.pexels.com/photos/4974351/pexels-photo-4974351.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
                         alt=""
                     />
                     <div className="profile">
-                        <ArrowDropDown className="icon"/>
+                        <ArrowDropDown className="icon" />
                         <div className="options">
                             <span>Settings</span>
                             <span>Logout</span>
