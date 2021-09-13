@@ -11,6 +11,17 @@
         color: white;
         cursor: pointer;
         z-index: 1;
+        align-items: center;
+        justify-content: space-around;
+
+        .homeButton {
+            margin: 0 10px;
+        }
+
+        .link {
+            display: flex;
+            align-items: center;
+        }
     }
 
     video {
@@ -18,4 +29,6 @@
         height: 100%;
         object-fit: cover;
     }
+    
+
 }

@@ -1,12 +1,29 @@
 import { InfoOutlined, PlayArrow } from '@material-ui/icons'
-import React from 'react'
+import axios from 'axios'
+import React, { useEffect, useState } from 'react'
 import './Featured.scss'
 const Featured = (props) => {
+    const [content, setContent] = useState({})
+    useEffect(() => {
+        const getRandomContent = async () => {
+            try {
+                const res = await axios.get(`/movies/random?type=${props.type}`, {
+                    headers: {
+                        token: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxMWY5OTAyMzg5MTMxMjJhM2Y5YzI1NyIsImlzQWRtaW4iOnRydWUsImlhdCI6MTYzMTE5OTc0NCwiZXhwIjoxNjMxNjMxNzQ0fQ.9HSl_gT1Np_9JyMx-r-ifhqH-Q60oP90nC3eDsz0iZY'
+                    }
+                })
+                setContent(res.data[0])
+            } catch (err) {
+                console.log(err)
+            }
+        }
+        getRandomContent()
+    }, [props.type])
     return (
         <div className="featured">
             {props.type && (
                 <div className="category">
-                    <span>{props.type === 'movie' ? 'Movies' : 'Series'}</span>
+                    <span>{props.type === 'movies' ? 'Movies' : 'Series'}</span>
                     <select name="genre" id="genre">
                         <option>Genre</option>
                         <option value="adventure">Adventure</option>
@@ -22,22 +39,21 @@ const Featured = (props) => {
                         <option value="animation">Animation</option>
                         <option value="drama">Drama</option>
                         <option value="documentary">Documentary</option>
-
                     </select>
                 </div>
             )}
             <img 
             width="100%"  
-            src="https://images.pexels.com/photos/922807/pexels-photo-922807.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" 
+            src={content.img}
             alt="" 
             />
             <div className="info">
                 <img 
-                src="https://upload.wikimedia.org/wikipedia/commons/9/9d/Spider-Man_ITSV.png" 
+                src={content.imgTitle}
                 alt="" 
                 />
                 <span className="desc">
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Saepe rerum consectetur reiciendis voluptatum autem dolorem quidem sequi impedit.
+                {content.desc}
                 </span>
                 <div className="buttons">
                     <button className="play">

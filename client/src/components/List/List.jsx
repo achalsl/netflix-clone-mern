@@ -2,7 +2,7 @@ import { ArrowBackIosOutlined, ArrowForwardIosOutlined } from '@material-ui/icon
 import React, { useRef, useState } from 'react'
 import ListItem from '../ListItem/ListItem'
 import './List.scss'
-const List = () => {
+const List = (props) => {
     const [slideNumber, setSlideNumber] = useState(0)
     const [isMoved, setIsMoved] = useState(false)
 
@@ -21,7 +21,7 @@ const List = () => {
     }
     return (
         <div className="list">
-            <span className="listTitle">Continue To Watch</span>
+            <span className="listTitle">{props.list.title}</span>
             <div className="wrapper">
                 <ArrowBackIosOutlined 
                     className="sliderArrow left" 
@@ -29,16 +29,9 @@ const List = () => {
                     style={{display: !isMoved && 'none'}}
                 />
                 <div className="container" ref={listRef}>
-                    <ListItem index="0" />
-                    <ListItem index="1" />
-                    <ListItem index="2" />
-                    <ListItem index="3" />
-                    <ListItem index="4" />
-                    <ListItem index="5" />
-                    <ListItem index="6" />
-                    <ListItem index="7" />
-                    <ListItem index="8" />
-                    <ListItem index="9" imgSrc="https://images.pexels.com/photos/4190056/pexels-photo-4190056.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500" />
+                    {props.list.content.map((item, index) => (
+                        <ListItem index={index} item={item} key={index} />
+                    ))}
                 </div>
                 <ArrowForwardIosOutlined className="sliderArrow right" onClick={() => handleClick('right')} />
             </div>
