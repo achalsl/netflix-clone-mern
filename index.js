@@ -21,10 +21,10 @@ mongoose
 
 app.use(express.json())
 
-app.use('/api/auth', authRoute)
-app.use('/api/users', userRoute)
-app.use('/api/movies', movieRoute)
-app.use('/api/watchlists', watchlistRoute)
+app.use('/auth', authRoute)
+app.use('/users', userRoute)
+app.use('/movies', movieRoute)
+app.use('/watchlists', watchlistRoute)
 
 app.use(express.static(path.join(__dirname, "/client/build")))
 
