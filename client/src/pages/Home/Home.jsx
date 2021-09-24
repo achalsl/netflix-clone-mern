@@ -18,7 +18,7 @@ const Home = (props) => {
                         `watchlists${props.type ? '?type=' + props.type : ""}${genre ? '&genre=' + genre : ""}`, 
                         {
                             headers: {
-                                token: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxMWY5OTAyMzg5MTMxMjJhM2Y5YzI1NyIsImlzQWRtaW4iOnRydWUsImlhdCI6MTYzMjE2MzQ4NCwiZXhwIjoxNjMyNTk1NDg0fQ.rhCAnIRUBKqS9tVvOQNe3ksj6zB4aOaLrnVaX2S3mVI'
+                                token: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxMWY5OTAyMzg5MTMxMjJhM2Y5YzI1NyIsImlzQWRtaW4iOnRydWUsImlhdCI6MTYzMjQ3MjY0MiwiZXhwIjoxNjMyOTA0NjQyfQ.oRH5vI1B5Ees_0E-grh4s6B5AP4SdPas9jECFmbCQ0g'
                             }
                         }
                     )
