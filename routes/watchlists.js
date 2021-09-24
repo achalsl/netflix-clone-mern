@@ -37,7 +37,7 @@ router.get('/', verify, async (req, res) => {
                 ])
             }
         } else {
-            watchlist = await Watchlist.aggregate([{ $sample: { size: 13 } }])
+            watchlist = await Watchlist.aggregate([{ $sample: { size: 26 } }])
         }
         return res.status(200).json(watchlist)
     } catch (err) {
