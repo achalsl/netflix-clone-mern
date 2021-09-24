@@ -1,15 +1,16 @@
-import { InfoOutlined, PlayArrow } from '@material-ui/icons'
+import { InfoOutlined, PlayArrow, SettingsEthernetRounded } from '@material-ui/icons'
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import './Featured.scss'
 const Featured = (props) => {
     const [content, setContent] = useState({})
+    
     useEffect(() => {
         const getRandomContent = async () => {
             try {
                 const res = await axios.get(`/movies/random?type=${props.type}`, {
                     headers: {
-                        token: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxMWY5OTAyMzg5MTMxMjJhM2Y5YzI1NyIsImlzQWRtaW4iOnRydWUsImlhdCI6MTYzMTE5OTc0NCwiZXhwIjoxNjMxNjMxNzQ0fQ.9HSl_gT1Np_9JyMx-r-ifhqH-Q60oP90nC3eDsz0iZY'
+                        token: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxMWY5OTAyMzg5MTMxMjJhM2Y5YzI1NyIsImlzQWRtaW4iOnRydWUsImlhdCI6MTYzMjE2MzQ4NCwiZXhwIjoxNjMyNTk1NDg0fQ.rhCAnIRUBKqS9tVvOQNe3ksj6zB4aOaLrnVaX2S3mVI'
                     }
                 })
                 setContent(res.data[0])
@@ -23,8 +24,8 @@ const Featured = (props) => {
         <div className="featured">
             {props.type && (
                 <div className="category">
-                    <span>{props.type === 'movies' ? 'Movies' : 'Series'}</span>
-                    <select name="genre" id="genre">
+                    <span>{props.type === 'movie' ? 'Movies' : 'TV Shows'}</span>
+                    <select name="genre" id="genre" onChange={event => props.setGenre(event.target.value)}>
                         <option>Genre</option>
                         <option value="adventure">Adventure</option>
                         <option value="comedy">Comedy</option>

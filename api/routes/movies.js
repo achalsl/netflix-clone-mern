@@ -35,12 +35,28 @@ router.put('/:id', verify, async (req, res) => {
     }
 })
 
+
+
 // DELETE MOVIE
 router.delete('/:id', verify, async (req, res) => {
     if(req.user.isAdmin) {
         try {
             await Movie.findByIdAndDelete(req.params.id)
             return res.status(200).json('Resource has been deleted successfully!')
+        } catch (err) {
+            res.status(500).json(err)
+        }
+    } else {
+        res.status(403).json('You are not authorized to delete this resource!')
+    }
+})
+
+// DELETE ALL MOVIES
+router.delete('/', verify, async (req, res) => {
+    if(req.user.isAdmin) {
+        try {
+            await Movie.deleteMany({})
+            return res.status(200).json('Resources have been deleted successfully!')
         } catch (err) {
             res.status(500).json(err)
         }
@@ -83,9 +99,10 @@ router.get('/:id', verify, async (req, res) => {
 
 // GET ALL MOVIES
 router.get('/', verify, async (req, res) => {
+    let genre = req.query.genre
     if(req.user.isAdmin) {
         try {
-            const movies = await Movie.find()
+            const movies = genre ? await Movie.find({ genre: genre }) : await Movie.find() 
             return res.status(200).json(movies.reverse())
         } catch (err) {
             res.status(500).json(err)
@@ -95,5 +112,7 @@ router.get('/', verify, async (req, res) => {
     }
     
 })
+
+
 
 module.exports = router

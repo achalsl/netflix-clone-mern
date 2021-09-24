@@ -1,32 +1,39 @@
 
 import React, { useEffect, useState } from 'react'
 import Featured from '../../components/Featured/Featured'
-import List from '../../components/List/List'
+import Watchlist from '../../components/Watchlist/Watchlist'
 import Navbar from '../../components/Navbar/Navbar'
 import axios from 'axios'
 import './Home.scss'
 
 const Home = (props) => {
-    const [lists, setLists] = useState([])
+    const [watchlists, setWatchlists] = useState([])
     const [genre, setGenre] = useState(null)
     useEffect(() => {
-        const getRandomLists = async () => {
+        let mounted = true
+        const getRandomWatchlists = async () => {
             try {
-                const res = await axios.get(
-                    `lists${props.type ? '?type=' + props.type : ""}${genre ? '&genre=' + genre : ""}`, 
-                    {
-                        headers: {
-                            token: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxMWY5OTAyMzg5MTMxMjJhM2Y5YzI1NyIsImlzQWRtaW4iOnRydWUsImlhdCI6MTYzMTE5OTc0NCwiZXhwIjoxNjMxNjMxNzQ0fQ.9HSl_gT1Np_9JyMx-r-ifhqH-Q60oP90nC3eDsz0iZY'
+                if(mounted) {
+                    const res = await axios.get(
+                        `watchlists${props.type ? '?type=' + props.type : ""}${genre ? '&genre=' + genre : ""}`, 
+                        {
+                            headers: {
+                                token: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxMWY5OTAyMzg5MTMxMjJhM2Y5YzI1NyIsImlzQWRtaW4iOnRydWUsImlhdCI6MTYzMjE2MzQ4NCwiZXhwIjoxNjMyNTk1NDg0fQ.rhCAnIRUBKqS9tVvOQNe3ksj6zB4aOaLrnVaX2S3mVI'
+                            }
                         }
-                    }
-                )
-                console.log('lists: ', res.data)
-                setLists(res.data)
+                    )
+                    console.log('watchlists: ', res.data)
+                    setWatchlists(res.data)
+                }
+                
             } catch(err) {
                 console.log(err)
             }
         }
-        getRandomLists()
+        getRandomWatchlists()
+        return () => {
+            mounted = false
+        }
     }, [props.type, genre])
     return (
         <div className="home">
@@ -36,9 +43,9 @@ const Home = (props) => {
             src="https://images.pexels.com/photos/1025469/pexels-photo-1025469.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=1440&w=2560" 
             alt="" 
             /> */}
-            <Featured type={props.type} />
-            {lists.map(list => (
-                <List list={list} key={list.title}/>
+            <Featured type={props.type} setGenre={setGenre}/>
+            {watchlists.map(watchlist => (
+                <Watchlist watchlist={watchlist} key={watchlist.title}/>
             ))}
         </div>
     )

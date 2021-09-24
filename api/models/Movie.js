@@ -1,4 +1,5 @@
 const mongoose = require('mongoose')
+const opts = { toJSON: { virtuals: true } }
 const MovieSchema = new mongoose.Schema(
     {
         title: { type: String, required: true, unique: true },
@@ -10,10 +11,12 @@ const MovieSchema = new mongoose.Schema(
         video: { type: String },
         releaseYear: { type: String },
         genre: { type: String },
+        duration: { type: String },
         ageLimit: { type: Number },
         isSeries: { type: Boolean, default: false }
     }, 
-    { timestamps: true }
+    { timestamps: true },
+    opts
 )
 
 module.exports = mongoose.model('Movie', MovieSchema)

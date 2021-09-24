@@ -1,14 +1,24 @@
 import { ArrowDropDown, Notifications, SearchRounded } from '@material-ui/icons'
-import React, {useState} from 'react'
+import React, {useEffect, useRef, useState} from 'react'
 import { Link } from 'react-router-dom'
 import './Navbar.scss'
 const Navbar = () => {
     const [isScrolled, setIsScrolled] = useState(false)
-    window.onscroll = () => {
-        setIsScrolled(window.pageYOffset === 0 ? false : true)
-        return () => window.onscroll = null
+    const mounted = useRef(false)
+
+    useEffect(() => {
+        mounted.current = true
+        return () => {
+            mounted.current = false
+        }
+    })
+
+    if(mounted.current) {
+        window.onscroll = () => {
+            setIsScrolled(window.pageYOffset === 0 ? false : true)
+            return () => window.onscroll = null
+        }
     }
-    console.log(isScrolled)
     return (
         <div className={isScrolled ? "navbar scrolled" : "navbar"}>
             <div className="container">
