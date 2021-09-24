@@ -1,5 +1,5 @@
 import { Add, PlayArrow, ThumbDownOutlined, ThumbUpOutlined } from '@material-ui/icons'
-import axios from 'axios'
+import { axiosInstance } from '../../config'
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import './WatchlistItem.scss'
@@ -13,7 +13,7 @@ const WatchlistItem = (props) => {
         const getMovie = async () => {
             if(mounted) {
                 try {
-                    const res = await axios.get('/movies/'+props.item, {
+                    const res = await axiosInstance.get('/movies/'+props.item, {
                         headers: {
                             token: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxMWY5OTAyMzg5MTMxMjJhM2Y5YzI1NyIsImlzQWRtaW4iOnRydWUsImlhdCI6MTYzMjE2MzQ4NCwiZXhwIjoxNjMyNTk1NDg0fQ.rhCAnIRUBKqS9tVvOQNe3ksj6zB4aOaLrnVaX2S3mVI'
                         }

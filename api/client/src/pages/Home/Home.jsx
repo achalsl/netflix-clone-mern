@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react'
 import Featured from '../../components/Featured/Featured'
 import Watchlist from '../../components/Watchlist/Watchlist'
 import Navbar from '../../components/Navbar/Navbar'
-import axios from 'axios'
+import { axiosInstance } from '../../config'
 import './Home.scss'
 
 const Home = (props) => {
@@ -14,7 +14,7 @@ const Home = (props) => {
         const getRandomWatchlists = async () => {
             try {
                 if(mounted) {
-                    const res = await axios.get(
+                    const res = await axiosInstance.get(
                         `watchlists${props.type ? '?type=' + props.type : ""}${genre ? '&genre=' + genre : ""}`, 
                         {
                             headers: {

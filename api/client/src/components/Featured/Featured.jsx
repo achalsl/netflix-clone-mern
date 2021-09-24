@@ -1,5 +1,5 @@
 import { InfoOutlined, PlayArrow, SettingsEthernetRounded } from '@material-ui/icons'
-import axios from 'axios'
+import { axiosInstance } from '../../config'
 import React, { useEffect, useState } from 'react'
 import './Featured.scss'
 const Featured = (props) => {
@@ -8,7 +8,7 @@ const Featured = (props) => {
     useEffect(() => {
         const getRandomContent = async () => {
             try {
-                const res = await axios.get(`/movies/random?type=${props.type}`, {
+                const res = await axiosInstance.get(`/movies/random?type=${props.type}`, {
                     headers: {
                         token: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxMWY5OTAyMzg5MTMxMjJhM2Y5YzI1NyIsImlzQWRtaW4iOnRydWUsImlhdCI6MTYzMjE2MzQ4NCwiZXhwIjoxNjMyNTk1NDg0fQ.rhCAnIRUBKqS9tVvOQNe3ksj6zB4aOaLrnVaX2S3mVI'
                     }

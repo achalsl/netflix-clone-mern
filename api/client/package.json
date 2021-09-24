@@ -41,6 +41,5 @@
   },
   "devDependencies": {
     "sass": "^1.37.5"
-  },
-  "proxy": "http://localhost:8800/api/"
+  }
 }
