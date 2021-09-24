@@ -26,7 +26,7 @@ const Featured = (props) => {
                 <div className="category">
                     <span>{props.type === 'movie' ? 'Movies' : 'TV Shows'}</span>
                     <select name="genre" id="genre" onChange={event => props.setGenre(event.target.value)}>
-                        <option>Genre</option>
+                        <option value="">Genre</option>
                         <option value="adventure">Adventure</option>
                         <option value="comedy">Comedy</option>
                         <option value="crime">Crime</option>
