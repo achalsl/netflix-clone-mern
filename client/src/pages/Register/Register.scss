@@ -1,99 +1,125 @@
 .register {
-    width: 100vw;
-    height: 100vh;
-    background: linear-gradient(
-        to bottom, rgba(0,0,0,0) 0%, 
-        rgba(0,0,0,1) 100%), 
-        url('https://cdn.hipwallpaper.com/i/98/21/dUyCkp.jpg');
-    position: relative;
-    .top {
-        .wrapper {
-            padding: 20px 50px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
+	width: 100vw;
+	height: 100vh;
+	background: linear-gradient(
+			to bottom,
+			rgba(0, 0, 0, 0) 0%,
+			rgba(0, 0, 0, 1) 100%
+		),
+		url("https://cdn.hipwallpaper.com/i/98/21/dUyCkp.jpg");
+	position: relative;
+	.top {
+		.wrapper {
+			padding: 20px 50px;
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			.logo {
+				height: 40px;
+			}
 
-            .logo {
-                height: 40px;   
-            }
+			.loginButton {
+				background-color: red;
+				color: white;
+				border: none;
+				border-radius: 5px;
+				padding: 5px 15px;
+				font-size: 16px;
+				font-weight: 500;
+				cursor: pointer;
+				height: 40px;
+				width: 100px;
+			}
+		}
+		.container {
+			width: 100%;
+			height: calc(100% - 80px);
+			position: absolute;
+			top: 80px;
+			left: 0;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+			color: white;
+			box-sizing: border-box;
 
-            .loginButton {
-                background-color: red;
-                color: white;
-                border: none;
-                border-radius: 5px;
-                padding: 5px 15px;
-                font-size: 16px;
-                font-weight: 500;
-                cursor: pointer;
-            }
-        }
-        .container {
-            width: 100%;
-            height: 100%;
-            position: absolute;
-            top: 0;
-            left: 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            color: white;
+			h1 {
+				font-size: 50px;
+				text-align: center;
+				max-width: 640px;
+			}
 
-            h1 {
-                font-size: 50px;
-                text-align: center;
-                max-width: 640px;
-            }
+			h2 {
+				font-weight: 300;
+				margin: 16px auto;
+			}
 
-            h2 {
-                font-weight: 300;
-                margin: 16px auto;
-            }
+			p {
+				font-size: 20px;
+				margin-bottom: 20px;
+			}
 
-            p {
-                font-size: 20px;
-                margin-bottom: 20px;
-            }
+			.input {
+				width: 40%;
+				height: 314px;
+				padding: 40px 68px;
+				background-color: rgba(0, 0, 0, 0.75);
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				justify-content: center;
+				border-radius: 5px;
+				cursor: text;
+				box-sizing: border-box;
+				min-width: 480px;
 
-            .input {
-                width: 50%;
-                height: 50px;
-                background-color: white;
-                display: flex;
-                align-items: center;
-                justify-content: space-between;
-                border-radius: 5px;
-                cursor: text;
+				.inputFields {
+					display: flex;
+					flex-direction: column;
+					width: 100%;
+					border-radius: 5px;
+					align-items: center;
+				}
 
-                input {
-                    flex: 9;
-                    height: 100%;
-                    border: none;
-                    padding: 0px 10px;
-                }
-                
-                button {
-                    flex: 3;
-                    height: 100%;
-                    background-color: red;
-                    color: white;
-                    border: none;
-                    font-size: 25px;
-                    font-weight: 300;
-                    padding: 0px 15px;
-                    cursor: pointer;
-                    display: flex;
-                    align-items: center;
-                    justify-content: space-evenly;
-                    text-align: center;
-                    letter-spacing: 0.1px;
+				input {
+					justify-content: space-between;
+					border: none;
+					height: 50px;
+					width: 100%;
+					padding: 0px 10px;
+					background-color: rgb(51, 51, 51);
+					color: white;
+					border-radius: 5px;
+					margin-bottom: 10px;
+					box-sizing: border-box;
+				}
 
-                    .icon {
-                        font-size: 20px;
-                    }
-                }
-            }
-        }
-    }
+				button {
+					height: 50px;
+					width: 100%;
+					background-color: red;
+					color: white;
+					border: none;
+					font-size: 25px;
+					font-weight: 300;
+					padding: 0px 15px;
+					cursor: pointer;
+					display: flex;
+					align-items: center;
+					justify-content: center;
+					text-align: center;
+					letter-spacing: 0.1px;
+					align-self: center;
+					border-radius: 5px;
+					margin-top: 10px;
+
+					.icon {
+						font-size: 20px;
+						margin-left: 15px;
+					}
+				}
+			}
+		}
+	}
 }

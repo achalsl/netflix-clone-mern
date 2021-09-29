@@ -1,76 +1,90 @@
 .navbar {
-    color: white;
-    font-size: 14px;
-    position: fixed;
-    top: 0;
-    width: 100%;
-    z-index: 999;
-    background: linear-gradient(to bottom, rgba(0,0,0,0.7) 10%, rgb(0, 0, 0, 0));
+	color: white;
+	font-size: 14px;
+	position: fixed;
+	top: 0;
+	width: 100%;
+	z-index: 999;
+	background: linear-gradient(
+		to bottom,
+		rgba(0, 0, 0, 0.7) 10%,
+		rgb(0, 0, 0, 0)
+	);
 
-    &.scrolled {
-        background-color: var(--main-color);
-    }
+	&.scrolled {
+		background-color: var(--main-color);
+	}
 
-    .container {
-        padding: 0px 50px;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        height: 70px;
-        .left {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            img {
-                height: 25px;
-                margin-right: 30px;
-            }
-            span {
-                margin: 0px 10px;
-            }
-        }
-        .right {
-            display: flex;
-            align-items: center;
-            .icon {
-                margin-right: 15px;
-                cursor: pointer;
-            }
+	.container {
+		padding: 0px 50px;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		height: 70px;
+		.left {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			img {
+				height: 25px;
+				margin-right: 30px;
+			}
+			span {
+				margin: 0px 10px;
+			}
 
-            span {
-                margin-right: 15px;
-            }
-            
-            img {
-                width: 32px;
-                height: 32px;
-                border-radius: 5px;
-                object-fit: cover;
-                cursor: pointer;
-                margin: 0px 5px;
-            }
+			.active {
+				font-weight: 600;
+				font-size: 16px;
+			}
+		}
+		.right {
+			display: flex;
+			align-items: center;
+			.icon {
+				margin-right: 15px;
+				cursor: pointer;
+				transition: all 0.3s ease;
+				&.active {
+					transform: rotate(-180deg);
+				}
+			}
 
-            .profile {
-                .options {
-                    display: none;
-                    background-color: var(--main-color);
-                    border-radius: 5px;
-                }
+			span {
+				margin-right: 15px;
+			}
 
-                span {
-                    padding: 10px;
-                    cursor: pointer;
-                }
+			img {
+				width: 32px;
+				height: 32px;
+				border-radius: 5px;
+				object-fit: cover;
+				cursor: pointer;
+				margin: 0px 5px;
+			}
 
-                &:hover {
-                    .options {
-                        display: flex;
-                        flex-direction: column;
-                        position: absolute;
-                    }
-                }
-            }
-        }
-        
-    }
+			.profile {
+				.options {
+					display: none;
+					background-color: var(--main-color);
+					border-radius: 5px;
+
+					&.clicked {
+						display: flex;
+						flex-direction: column;
+						position: absolute;
+					}
+				}
+
+				span {
+					padding: 10px;
+					cursor: pointer;
+					margin: 0px;
+					&:hover {
+						background-color: rgba(255, 255, 255, 0.1);
+					}
+				}
+			}
+		}
+	}
 }

@@ -1,4 +1,6 @@
 const router = require('express').Router()
+const Movie = require('../models/Movie')
+const { watch } = require('../models/Watchlist')
 const Watchlist = require('../models/Watchlist')
 const verify = require('../verifyToken')
 
@@ -18,6 +20,19 @@ router.post('/', verify, async (req, res) => {
     }
 })
 
+
+// get all watchlist movies
+router.get('/:id/movies', verify, async (req, res) => {
+    let watchlist
+    try {
+        const watchlist = await Watchlist.findById(req.params.id)
+        let movieIds = watchlist.content
+        let movies =  await Movie.find({'_id': { $in: movieIds } })
+        return res.status(200).json(movies)
+    } catch (err) {
+        return res.status(500).json(err)
+    }
+})
 
 // GET LIST
 router.get('/', verify, async (req, res) => {
@@ -76,5 +91,7 @@ router.delete('/:id', verify, async (req, res) => {
         return res.status(403).json('You are not authorized to delete this resource!')
     }
 })
+
+
 
 module.exports = router
