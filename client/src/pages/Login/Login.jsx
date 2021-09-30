@@ -11,7 +11,7 @@ const Login = () => {
 	const history = useHistory();
 	const handleLogin = (event) => {
 		event.preventDefault();
-		login({ email: email, password: password }, dispatch);
+		login({ email, password }, dispatch);
 	};
 	const handleRegisterRedirect = () => {
 		history.push("/register");
@@ -39,7 +39,6 @@ const Login = () => {
 							placeholder="Password"
 							onChange={(event) => setPassword(event.target.value)}
 						/>
-						{console.log(email, password)}
 						<button className="loginButton" onClick={handleLogin}>
 							Sign In
 						</button>

@@ -13,7 +13,7 @@ const Featured = (props) => {
 		const getRandomContent = async () => {
 			try {
 				const res = await axiosInstance.get(
-					`/movies/random?type=${props.type}`,
+					`api/movies/random?type=${props.type}`,
 					{
 						headers: {
 							token:

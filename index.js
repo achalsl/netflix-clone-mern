@@ -23,14 +23,14 @@ app.use(express.json());
 
 app.use("/auth", authRoute);
 app.use("/users", userRoute);
-app.use("/movies", movieRoute);
+app.use("/api/movies", movieRoute);
 app.use("/watchlists", watchlistRoute);
 
-app.use(express.static(path.join(__dirname, "/client/build")));
+// app.use(express.static(path.join(__dirname, "/client/build")));
 
-app.get("*", (req, res) => {
-	res.sendFile(path.join(__dirname, "/client/build", "index.html"));
-});
+// app.get("*", (req, res) => {
+// 	res.sendFile(path.join(__dirname, "/client/build", "index.html"));
+// });
 
 app.listen(process.env.PORT || 8800, () => {
 	console.log("backend server is running");

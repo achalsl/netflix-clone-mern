@@ -4,13 +4,14 @@ import {
 	SearchRounded,
 } from "@material-ui/icons";
 import React, { useContext, useEffect, useRef, useState } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useHistory } from "react-router-dom";
 import { AuthContext } from "../../context/authContext/AuthContext";
 import { logout } from "../../context/authContext/apiCalls";
 import "./Navbar.scss";
 const Navbar = () => {
 	const [isScrolled, setIsScrolled] = useState(false);
 	const [isClicked, setIsClicked] = useState(false);
+	const history = useHistory();
 	const mounted = useRef(false);
 	const { dispatch } = useContext(AuthContext);
 
@@ -41,6 +42,8 @@ const Navbar = () => {
 					<img
 						src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Netflix_2015_logo.svg/2560px-Netflix_2015_logo.svg.png"
 						alt=""
+						onClick={() => history.push("/")}
+						className="homeLogo"
 					/>
 					<NavLink exact to="/" className="link">
 						<span>Home</span>

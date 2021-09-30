@@ -20,7 +20,7 @@ const Watchlist = (props) => {
 			const getWatchlistMovies = async () => {
 				try {
 					const movies = await axiosInstance.get(
-						`/watchlists/${props.id}/movies`,
+						`watchlists/${props.id}/movies`,
 						{
 							headers: {
 								token:

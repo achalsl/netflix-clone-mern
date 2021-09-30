@@ -10,31 +10,22 @@ const Register = () => {
 	const [password, setPassword] = useState("");
 	const emailRef = useRef();
 	const usernameRef = useRef();
-	const passwordRef = useRef();
 	const history = useHistory();
 
 	const handleStart = (event) => {
 		event.preventDefault();
 		setEmail(emailRef.current.value);
 		setUsername(usernameRef.current.value);
-		console.log(
-			"email: ",
-			emailRef.current.value,
-			"username :",
-			usernameRef.current.value
-		);
 	};
+
+	const handleChange = (event) => {
+		setPassword(event.target.value);
+	};
+
 	const handleFinish = async (event) => {
 		event.preventDefault();
-		setPassword(passwordRef.current.value);
-		console.log("password:", passwordRef.current.value);
 		try {
-			await axiosInstance.post("auth/register", {
-				email: email,
-				username: username,
-				password: password,
-			});
-
+			await axiosInstance.post("auth/register", { username, email, password });
 			history.push("/login");
 		} catch (err) {
 			console.log(err);
@@ -87,7 +78,11 @@ const Register = () => {
 						</form>
 					) : (
 						<form className="input">
-							<input type="password" placeholder="Password" ref={passwordRef} />
+							<input
+								type="password"
+								placeholder="Password"
+								onChange={handleChange}
+							/>
 							<button className="registerButton" onClick={handleFinish}>
 								Start
 							</button>
