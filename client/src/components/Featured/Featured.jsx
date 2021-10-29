@@ -11,13 +11,14 @@ const Featured = (props) => {
 
 	useEffect(() => {
 		const getRandomContent = async () => {
+			let user = JSON.parse(localStorage.getItem('user'))
 			try {
 				const res = await axiosInstance.get(
 					`api/movies/random?type=${props.type}`,
 					{
 						headers: {
 							token:
-								"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxMWY5OTAyMzg5MTMxMjJhM2Y5YzI1NyIsImlzQWRtaW4iOnRydWUsImlhdCI6MTYzMjkwNDc2NiwiZXhwIjoxNjMzMzM2NzY2fQ.SweaxfyVyoAz7gs6mWUp1O62f3XXSy2QYF2OiVLJWjI",
+								user.accessToken,
 						},
 					}
 				);
