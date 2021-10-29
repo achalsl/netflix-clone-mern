@@ -21,7 +21,7 @@ const Home = (props) => {
 						{
 							headers: {
 								token:
-									user.accessToken,
+									`Bearer ${user.accessToken}`,
 							},
 						}
 					);
